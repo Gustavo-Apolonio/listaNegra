@@ -7,6 +7,7 @@ namespace backend.Models.Response
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Motivo { get; set; }
+        public string Local { get; set; }
         public DateTime Inclusao { get; set; }
     }
 }

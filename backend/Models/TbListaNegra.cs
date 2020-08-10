@@ -17,6 +17,9 @@ namespace backend.Models
         [Required]
         [Column("ds_motivo", TypeName = "varchar(200)")]
         public string DsMotivo { get; set; }
+        [Required]
+        [Column("ds_local", TypeName = "varchar(100)")]
+        public string DsLocal { get; set; }
         [Column("dt_inclusao", TypeName = "datetime")]
         public DateTime DtInclusao { get; set; }
     }

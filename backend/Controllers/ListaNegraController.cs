@@ -19,15 +19,15 @@ namespace backend.Controllers
         {
             try
             {
-                Models.TbListaNegra ln = lnCnv.ToTableConversor(req);
+                Models.TbListaNegra ln = lnCnv.ToTable(req);
                 ln = bsns.Salvar(ln);
-                Models.Response.ListaNegraResponse resp = lnCnv.ToResponseConversor(ln);
+                Models.Response.ListaNegraResponse resp = lnCnv.ToResponse(ln);
                 return resp;
             }
             catch(System.Exception e)
             {
                 return BadRequest(
-                    new Models.Response.ErrorResponse(e.Message, 404)
+                    new Models.Response.ErrorResponse(e.Message, 400)
                 );
             }
         }
@@ -40,7 +40,7 @@ namespace backend.Controllers
                 List<Models.TbListaNegra> lns = bsns.Consultar();
                 if(lns.Count == 0)
                     return NotFound();
-                List<Models.Response.ListaNegraResponse> resp = lns.Select(x => lnCnv.ToResponseConversor(x)).ToList();
+                List<Models.Response.ListaNegraResponse> resp = lns.Select(x => lnCnv.ToResponse(x)).ToList();
                 return resp;
             }
             catch(System.Exception e)
@@ -50,5 +50,47 @@ namespace backend.Controllers
                 );
             }
         }
+
+        [HttpPut]
+        public ActionResult<Models.Response.ListaNegraResponse> Alterar(int id, Models.Request.ListaNegraRequest req)
+        {
+            try
+            {
+                Models.TbListaNegra atual = bsns.ConsultarPorId(id);
+                if(atual == null)
+                    return NotFound();
+                Models.TbListaNegra novo = lnCnv.ToTable(req);
+                atual = bsns.Alterar(atual, novo);
+                Models.Response.ListaNegraResponse resp = lnCnv.ToResponse(atual);
+                return resp;
+            }
+            catch (System.Exception e)
+            {
+                return BadRequest(
+                    new Models.Response.ErrorResponse(e.Message, 400)
+                );
+            }
+        }
+
+        [HttpDelete]
+        public ActionResult<Models.Response.ListaNegraResponse> Deletar(int id)
+        {
+            try
+            {
+                Models.TbListaNegra ln = bsns.ConsultarPorId(id);
+                if(ln == null)
+                    return NotFound();
+                ln = bsns.Deletar(ln);
+                Models.Response.ListaNegraResponse resp = lnCnv.ToResponse(ln);
+                return resp;
+            }
+            catch (System.Exception e)
+            {
+                return BadRequest(
+                    new Models.Response.ErrorResponse(e.Message, 400)
+                );
+            }
+        }
+
     }
 }

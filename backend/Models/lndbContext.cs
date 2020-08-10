@@ -21,8 +21,7 @@ namespace backend.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-              //string infoDb = "server=localhost;user id=root;password=A1234;database=lndb";
-                string infoDb = "server=sql10.freesqldatabase.com;user id=sql10359538;password=1uFY52d9Ya;database=sql10359538";
+                string infoDb = "server=localhost;user id=root;password=A1234;database=lndb";
                 optionsBuilder.UseMySql(infoDb, x => x.ServerVersion("8.0.21-mysql"));
             }
         }
@@ -33,6 +32,10 @@ namespace backend.Models
             {
                 entity.HasKey(e => e.IdListaNegra)
                     .HasName("PRIMARY");
+
+                entity.Property(e => e.DsLocal)
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
 
                 entity.Property(e => e.DsMotivo)
                     .HasCharSet("utf8mb4")
