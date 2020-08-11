@@ -17,6 +17,7 @@ export default function Routes() {
                     <Route path="/" exact={true} component={App} />
                     <Route path="/cadastrar" component={Cadastrar} />
                     <Route path="/consultar" component={Consultar} />
+                    <Route path="/alterar" component={Alterar} />
                     <Route path="*" component={NotFound} />
                 </Switch>
             </BrowserRouter>
