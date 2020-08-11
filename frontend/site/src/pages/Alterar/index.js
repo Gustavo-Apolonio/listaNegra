@@ -1,74 +1,79 @@
 import React, { useState } from 'react';
 
-import './Cadastrar.css';
+import './Alterar.css';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import ListaNegraApi from '../../services/ListaNegraApi';
+import { useParams } from 'react-router-dom';
 
 const api = new ListaNegraApi();
 
-export default function Cadastrar() {
 
-    const [nome, setNome] = useState('');
-    const [motivo, setMotivo] = useState('');
-    const [local, setLocal] = useState('');
-    const [inclusao, setInclusao] = useState('');
+export default function Alterar(props) {
 
-    const salvarClick = async () => {
-        const resp = await api.cadastrar({
+    const lnId = useParams().id; 
+    const ln = props.location.state;
+    const [nome, setNome] = useState(ln.nome);
+    const nome2 = ln.nome;
+    const [motivo, setMotivo] = useState(ln.motivo);
+    const [local, setLocal] = useState(ln.local);
+    const [inclusao, setInclusao] = useState(ln.inclusao);
+
+    const alterarClick = async (id) => {
+        console.log(id);
+        const resp = await api.alterar(id, {
                                 nome: nome,
                                 motivo: motivo,
                                 local: local,
                                 inclusao: inclusao
                            });
 
-        toast.dark('😈Cadastrado na Lista Negra!😈');
+        toast.dark('😈Alterado na Lista Negra!😈');
     }
 
     return(
-        <div className="cadastrar-container">
-
-            <div className="cadastrar-info-container">
-                <div className="cadastrar-info-titulo-container">
+        <div className="alterar-container">
+            <div className="alterar-info-container">
+                <div className="alterar-info-titulo-container">
                     <p>
-                        Cadastre alguém na lista negra!
+                        Alterando "{nome2}" para
                     </p>
                 </div>
 
-                <div className="cadastrar-input-div">
+                <div className="alterar-input-div">
                     <label>Nome : </label>
                     <input type="text"
                         value={nome}
                         onChange={(e) => setNome(e.target.value)}/>
                 </div>
 
-                <div className="cadastrar-input-div">
+                <div className="alterar-input-div">
                     <label>Motivo : </label>
                     <input type="text"
                         value={motivo}
                         onChange={(e) => setMotivo(e.target.value)}/>
                 </div>
 
-                <div className="cadastrar-input-div">
+                <div className="alterar-input-div">
                     <label>Local : </label>
                     <input type="text"
                         value={local}
                         onChange={(e) => setLocal(e.target.value)}/>
                 </div>
 
-                <div className="cadastrar-input-div">
+                <div className="alterar-input-div">
                     <label>Data : </label>
                     <input type="date"
                         value={inclusao}
                         onChange={(e) => setInclusao(e.target.value)}/>
                 </div>
 
-                <div className="cadastrar-button-div">
-                    <button onClick={salvarClick}
-                            className="cadastrar-button btn btn-lg btn-block">
-                        <p>Cadastrar</p>
+                <div>
+                    <button onClick={() => alterarClick(lnId)}
+                            className="alterar-button btn btn-lg btn-block">
+                        <p>Alterar</p>
                     </button>
                 </div>
             </div>

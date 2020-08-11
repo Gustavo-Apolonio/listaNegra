@@ -1,0 +1,81 @@
+.consultar-container {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 12pt;
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 1.5% 1.5%;
+    background-color: #36424D;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-width: 100vw;
+}
+
+.consultar-info-container {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - (100vh * 0.061));
+    padding: 1.5% 2%;
+    background-color: #00000050;
+    border: 3px solid #ffffff30;
+    border-radius: 10px;
+}
+
+.consultar-button-div-geral {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.consultar-button-div-title p {
+    font-size: 25pt;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.consultar-button-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+}
+
+.consultar-button-div button {
+    height: 100%;
+    width: 100%;
+    border-style: double;
+    border-width: 2px;
+    border-radius: 100%;
+    background-color: #ffffff30;
+}
+
+.consultar-button-div button img {
+    height: 80%;
+    width: 80%;
+    border-radius: 100%;
+}
+
+.consultar-tabela-div {
+    max-height: 100%;
+    width: 100%;
+}
+
+.consultar-table-button {
+    background-color: #00000050;
+    color: red;
+    font-size: 8.5pt;
+    border-style: dotted;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: #ffffff50;
+}
+
+.consultar-table-button a {
+    color: lime;
+    font-size: 8.5pt;
+}

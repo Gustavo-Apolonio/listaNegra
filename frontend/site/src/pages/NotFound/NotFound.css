@@ -1,0 +1,36 @@
+.notFound-container {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 12pt;
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 1.5% 1.5%;
+    background-color: #36424D;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    max-height: 100vh;
+    max-width: 100vw;
+}
+
+.notFound-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: calc(100vh - (100vh * 0.061));
+    width: 100%;
+    padding: 1.5% 2%;
+    background-image: url('../../images/empty.svg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    background-color: #ffffff30;
+    border: 3px solid #ffffff30;
+    border-radius: 10px;
+}
+
+.notFound-text-div {
+    font-size: 16pt;
+    margin: 5%;
+    width: 100%;
+}

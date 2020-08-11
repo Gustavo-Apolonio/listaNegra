@@ -21,7 +21,7 @@ namespace backend.Utils
             resp.NmPessoa = req.Nome;
             resp.DsMotivo = req.Motivo;
             resp.DsLocal = req.Local;
-            if(req.Inclusao == DateTime.MinValue)
+            if(req.Inclusao == null)
                 resp.DtInclusao = DateTime.Now;
             else
                 resp.DtInclusao = req.Inclusao;

@@ -21,6 +21,6 @@ namespace backend.Models
         [Column("ds_local", TypeName = "varchar(100)")]
         public string DsLocal { get; set; }
         [Column("dt_inclusao", TypeName = "datetime")]
-        public DateTime DtInclusao { get; set; }
+        public DateTime? DtInclusao { get; set; }
     }
 }

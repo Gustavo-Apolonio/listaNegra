@@ -51,7 +51,7 @@ namespace backend.Controllers
             }
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public ActionResult<Models.Response.ListaNegraResponse> Alterar(int id, Models.Request.ListaNegraRequest req)
         {
             try
@@ -72,7 +72,7 @@ namespace backend.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public ActionResult<Models.Response.ListaNegraResponse> Deletar(int id)
         {
             try

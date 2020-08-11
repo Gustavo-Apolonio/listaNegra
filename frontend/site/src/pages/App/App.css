@@ -1,38 +1,57 @@
-.App {
-  text-align: center;
+.app-container {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  box-sizing: border-box;
+  margin: 0%;
+  padding: 0%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-header {
+  background-color: #36424D;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  height: 100vh;
+  width: 100vw;
+  font-size: 15pt;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.app-links-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 12%;
+  width: 40%;
+  margin: 2%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.app-cadastrar-box, .app-consultar-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  width: 250px;
+}
+
+.app-cadastrar-button, .app-consultar-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  border-style: dotted;
+  border-radius: 10px;
+  border-color: #ffffff30;
+  border-width: 2px;
+  background-color: #ffffff15;
+  font-weight: bold;
+  color: black;
+}
+
+.app-cadastrar-button img, .app-consultar-button img {
+  height: 50px;
+  width: 50px;
+  margin: 2%;
 }

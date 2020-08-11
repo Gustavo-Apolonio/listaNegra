@@ -1,27 +1,41 @@
 import React from 'react';
 import './App.css';
 import { Link } from 'react-router-dom';
+import listaNegra from '../../images/lista-negra.svg';
+import lupa from '../../images/lupa.svg';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="app-container">
+      <div className="app-header">
 
-        <h1>Lista Negra</h1>
-
-        <div>
-          <h2>
-            <Link to='/cadastrar'>Cadastrar</Link>
-          </h2>
+        <div className="app-titulo-box">
+          <h1>
+            Bem vindo à Lista Negra
+          </h1>
         </div>
 
-        <div>
-          <h2>
-            <Link to='/consultar'>Consultar</Link>
-          </h2>
+        <div className="app-links-box">
+          <div className="app-cadastrar-box">
+            <Link to='/cadastrar'>
+              <button className="btn btn-lg app-cadastrar-button">
+                <img src={listaNegra} alt="listaNegra"/>
+                Cadastrar
+              </button>
+            </Link>
+          </div>
+
+          <div className="app-consultar-box">
+            <Link to='/consultar'>
+              <button className="btn btn-lg app-consultar-button">
+                <img src={lupa} alt="lupa"/>
+                Consultar
+              </button>
+            </Link>
+          </div>
         </div>
-      
-      </header>
+
+      </div>
     </div>
   );
 }

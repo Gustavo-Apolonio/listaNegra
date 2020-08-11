@@ -31,6 +31,7 @@ namespace backend.Database
             atual.NmPessoa = novo.NmPessoa;
             atual.DsMotivo = novo.DsMotivo;
             atual.DsLocal = novo.DsLocal;
+            atual.DtInclusao = novo.DtInclusao;
             
             ctx.SaveChanges();
 

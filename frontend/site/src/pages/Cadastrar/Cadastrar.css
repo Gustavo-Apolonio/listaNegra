@@ -1,0 +1,67 @@
+.cadastrar-container {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 12pt;
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 1.5% 1.5%;
+    background-color: #36424D;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.cadastrar-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 1.5% 2%;
+    background-color: #00000050;
+    border: 3px solid #ffffff30;
+    border-radius: 10px;
+}
+
+.cadastrar-info-titulo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0% 0% 5% 0%;
+}
+
+.cadastrar-info-titulo-container p {
+    font-size: 25pt;
+    width: 100%;
+    padding: 0;
+}
+
+.cadastrar-input-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 15%;
+}
+
+.cadastrar-input-div label {
+    padding-top: 0.6%;
+}
+
+.cadastrar-input-div input {
+    height: 35%;
+    width: 82%;
+    border-radius: 5px;
+    color: black;
+}
+
+.cadastrar-button {
+    background-color: darkred;
+}
+
+.cadastrar-button p {
+    margin: 0%;
+    padding: 0%;
+    font-size: 15pt;
+    font-weight: bold;
+}
