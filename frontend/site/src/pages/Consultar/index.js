@@ -103,7 +103,7 @@ export default function Consultar() {
                         </tbody>
                     </table>
                 </div>
-                <div className="home-button-div">
+                <div className="home-button-div-left">
                     <Link to='/'>
                         <button className="btn btn-sm home-button">
                             Voltar ao Início

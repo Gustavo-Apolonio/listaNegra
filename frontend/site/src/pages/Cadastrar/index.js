@@ -85,7 +85,7 @@ export default function Cadastrar() {
                             <p>Cadastrar</p>
                     </button>
                 </div>
-                <div className="home-button-div home-button-div-center">
+                <div className="home-button-div">
                     <Link to='/'>
                         <button className="btn btn-sm home-button">
                             Voltar ao Início

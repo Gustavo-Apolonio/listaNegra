@@ -83,7 +83,12 @@ export default function Alterar(props) {
                             <p>Alterar</p>
                     </button>
                 </div>
-                <div className="home-button-div home-button-div-center">
+                <div className="home-button-div">
+                <Link to='/consultar'>
+                        <button className="btn btn-sm home-button">
+                            Voltar
+                        </button>
+                    </Link>
                     <Link to='/'>
                         <button className="btn btn-sm home-button">
                             Voltar ao Início
