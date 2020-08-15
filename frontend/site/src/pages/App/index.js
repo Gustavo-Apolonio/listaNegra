@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import listaNegra from '../../images/lista-negra.svg';
 import lupa from '../../images/lupa.svg';
 
-function App() {
+export default function App() {
   return (
     <div className="app-container">
       <div className="app-header">
@@ -39,5 +39,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

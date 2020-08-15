@@ -75,7 +75,16 @@
     border-color: #ffffff50;
 }
 
-.consultar-table-button a {
+.alterar-table-button {
     color: lime;
+}
+
+.home-button {
+    background-color: #00000050;
+    color: lightseagreen;
     font-size: 8.5pt;
+    border-style: dotted;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: #ffffff50;
 }

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 import './Consultar.css';
 import lupa from '../../images/lupa.svg'
@@ -22,8 +22,13 @@ export default function Consultar() {
     const consultarClick = async () => {
         loadingBar.current.continuousStart();
 
-        const lns = await api.consultar();
-        setRegistros([...lns]);
+        try{
+            const lns = await api.consultar();
+            setRegistros([...lns]);
+        } catch (e) {
+            setRegistros([]);
+            toast.error('Não há pessoas na lista negra, ainda...', {autoClose: 3000});
+        }
         
         loadingBar.current.complete();
     }
@@ -31,9 +36,13 @@ export default function Consultar() {
     const deletarClick = async (id) => {   
         const resp = await api.deletar(id);
         toast.dark('😈Deletado da Lista Negra!😈', {
-            position: "bottom-right"});
+            position: "bottom-right",
+            autoClose: 2000});
         consultarClick();
+        return resp;
     }
+
+    useEffect(() => {consultarClick()}, []);
 
     return(
         <div className="consultar-container">
@@ -74,17 +83,15 @@ export default function Consultar() {
                                     <td>{registro.motivo}</td>
                                     <td>{registro.local}</td>
                                     <td>{new Date(`${registro.inclusao}Z`).toLocaleDateString()}</td>
-                                    <td><button className="btn btn-sm consultar-table-button">
-                                            <Link to={{
-                                                pathname: `/alterar/${registro.id}`,
-                                                state: {
-                                                    nome: registro.nome,
-                                                    motivo: registro.motivo,
-                                                    local: registro.local,
-                                                    inclusao: registro.inclusao
-                                                }
-                                            }}>Alterar</Link>
-                                        </button>
+                                    <td><Link to={{pathname: `/alterar/${registro.id}`,
+                                                   state: {
+                                                       nome: registro.nome,
+                                                       motivo: registro.motivo,
+                                                       local: registro.local,
+                                                       inclusao: registro.inclusao
+                                                   }}}><button className="btn btn-sm consultar-table-button alterar-table-button">
+                                                            Alterar
+                                                       </button></Link>
                                     </td>
                                     <td><button className="btn btn-sm consultar-table-button"
                                                 onClick={() => deletarClick(registro.id)}>
@@ -95,6 +102,13 @@ export default function Consultar() {
                             )}
                         </tbody>
                     </table>
+                </div>
+                <div className="home-button-div">
+                    <Link to='/'>
+                        <button className="btn btn-sm home-button">
+                            Voltar ao Início
+                        </button>
+                    </Link>
                 </div>
             </div>
             <ToastContainer />

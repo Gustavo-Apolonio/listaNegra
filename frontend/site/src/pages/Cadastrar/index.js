@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import ListaNegraApi from '../../services/ListaNegraApi';
+import { Link, useHistory } from 'react-router-dom';
 
 const api = new ListaNegraApi();
 
@@ -15,16 +16,29 @@ export default function Cadastrar() {
     const [motivo, setMotivo] = useState('');
     const [local, setLocal] = useState('');
     const [inclusao, setInclusao] = useState('');
+    const navegation = useHistory();
 
     const salvarClick = async () => {
-        const resp = await api.cadastrar({
-                                nome: nome,
-                                motivo: motivo,
-                                local: local,
-                                inclusao: inclusao
-                           });
+        try {
+            const resp = await api.cadastrar({
+                                    nome: nome,
+                                    motivo: motivo,
+                                    local: local,
+                                    inclusao: inclusao
+                            });
 
-        toast.dark('😈Cadastrado na Lista Negra!😈');
+            setNome('');
+            setMotivo('');
+            setLocal('');
+            setInclusao('');
+
+            toast.dark('😈Cadastrado na Lista Negra!😈', {autoClose: 2000});
+            
+            setTimeout(() => {navegation.goBack();}, 2000);
+            return resp;
+        } catch(e) {
+            toast.error(e.response.data.erro);
+        }
     }
 
     return(
@@ -68,8 +82,15 @@ export default function Cadastrar() {
                 <div className="cadastrar-button-div">
                     <button onClick={salvarClick}
                             className="cadastrar-button btn btn-lg btn-block">
-                        <p>Cadastrar</p>
+                            <p>Cadastrar</p>
                     </button>
+                </div>
+                <div className="home-button-div home-button-div-center">
+                    <Link to='/'>
+                        <button className="btn btn-sm home-button">
+                            Voltar ao Início
+                        </button>
+                    </Link>
                 </div>
             </div>
             <ToastContainer />

@@ -65,3 +65,10 @@
     font-size: 15pt;
     font-weight: bold;
 }
+
+.home-button-div-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
