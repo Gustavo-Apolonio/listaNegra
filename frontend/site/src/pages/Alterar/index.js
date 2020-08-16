@@ -19,7 +19,7 @@ export default function Alterar(props) {
     const nome2 = ln.nome;
     const [motivo, setMotivo] = useState(ln.motivo);
     const [local, setLocal] = useState(ln.local);
-    const [inclusao, setInclusao] = useState(ln.inclusao);
+    const [inclusao, setInclusao] = useState(ln.inclusao.toISOString().substr(0, 10));
     const navegation = useHistory();
 
     const alterarClick = async (id) => {
