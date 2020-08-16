@@ -55,6 +55,24 @@
     color: black;
 }
 
+.erroMessage {
+    color: red;
+    position: absolute;
+    transform: translate(44%, 150%);
+}
+
+.motivoErro {
+    transform: translate(42%, 150%);
+}
+
+.localErro {
+    transform: translate(45%, 150%);
+}
+
+.inclusaoErro {
+    transform: translate(47%, 150%);
+}
+
 .cadastrar-button {
     background-color: darkred;
 }

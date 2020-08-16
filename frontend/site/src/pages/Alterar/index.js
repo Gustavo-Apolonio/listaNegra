@@ -20,6 +20,10 @@ export default function Alterar(props) {
     const [motivo, setMotivo] = useState(ln.motivo);
     const [local, setLocal] = useState(ln.local);
     const [inclusao, setInclusao] = useState(new Date(ln.inclusao).toISOString().substr(0, 10));
+    const [nomeErro, setNomeErro] = useState('');
+    const [motivoErro, setMotivoErro] = useState('');
+    const [localErro, setLocalErro] = useState('');
+    const [inclusaoErro, setInclusaoErro] = useState('');
     const navegation = useHistory();
 
     const alterarClick = async (id) => {
@@ -36,7 +40,14 @@ export default function Alterar(props) {
             setTimeout(() => {navegation.goBack();}, 1500);
             return resp;
         } catch (e) {
-            toast.error(e.response.data.erro);
+            if(e.response.data.erro.includes('Nome'))
+                setNomeErro(e.response.data.erro);
+            else if(e.response.data.erro.includes('Motivo'))
+                setMotivoErro(e.response.data.erro);
+            else if(e.response.data.erro.includes('Local'))
+                setLocalErro(e.response.data.erro);
+            else if(e.response.data.erro.includes('Data'))
+                setInclusaoErro(e.response.data.erro);
         }
     }
 
@@ -53,28 +64,40 @@ export default function Alterar(props) {
                     <label>Nome : </label>
                     <input type="text"
                         value={nome}
-                        onChange={(e) => setNome(e.target.value)}/>
+                        placeholder='Insira o nome da pessoa...'
+                        onChange={(e) => {setNome(e.target.value);
+                                          setNomeErro('')}}/>
+                    <p className='erroMessage nomeErro'>{nomeErro}</p>
                 </div>
 
                 <div className="alterar-input-div">
                     <label>Motivo : </label>
                     <input type="text"
                         value={motivo}
-                        onChange={(e) => setMotivo(e.target.value)}/>
+                        placeholder='Insira o motivo da inclusão...'
+                        onChange={(e) => {setMotivo(e.target.value);
+                                          setMotivoErro('');}}/>
+                    <p className='erroMessage motivoErro'>{motivoErro}</p>
                 </div>
 
                 <div className="alterar-input-div">
                     <label>Local : </label>
                     <input type="text"
                         value={local}
-                        onChange={(e) => setLocal(e.target.value)}/>
+                        placeholder='Insira o local onde ela entrou na sua lista...'
+                        onChange={(e) => {setLocal(e.target.value);
+                                          setLocalErro('');}}/>
+                    <p className='erroMessage localErro'>{localErro}</p>
                 </div>
 
                 <div className="alterar-input-div">
                     <label>Data : </label>
                     <input type="date"
-                        value={inclusao}
-                        onChange={(e) => setInclusao(e.target.value)}/>
+                           placeholder='Insira a data em que ela entrou na sua lista...'
+                           value={inclusao}
+                           onChange={(e) => {setInclusao(e.target.value);
+                                             setInclusaoErro('')}}/>
+                    <p className='erroMessage inclusaoErro'>{inclusaoErro}</p>
                 </div>
 
                 <div>
