@@ -21,14 +21,14 @@ export default class tbBlackList extends Model {
         ds_place: {
           type: DataTypes.STRING(100),
         },
-        ds_occurred: {
+        dt_occurred: {
           type: DataTypes.DATE,
         },
-        ds_include: {
+        dt_included: {
           type: DataTypes.DATE,
           allowNull: false,
         },
-        ds_lastUpdate: {
+        dt_lastUpdate: {
           type: DataTypes.DATE,
           allowNull: false,
         },

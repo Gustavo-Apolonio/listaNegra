@@ -10,7 +10,7 @@ create table tb_blacklist (
   ds_reason varchar(200),
   ds_place varchar(100),
   dt_occurred dateTime,
-  dt_include dateTime not null,
+  dt_included dateTime not null,
   dt_lastUpdate dateTime not null
 );
 
