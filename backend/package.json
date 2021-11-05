@@ -1,0 +1,34 @@
+{
+  "name": "back-node",
+  "version": "1.0.0",
+  "description": "Refactored repo to node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'Error: No test specified'",
+    "deps": "npm i --save && echo 'Backend deps successfully installed.'",
+    "start": "nodemon index.js",
+    "portW": "set PORT=5000 && npm start",
+    "portL": "export PORT=5000 && npm start",
+    "depsW": "npm run deps && npm run portW",
+    "depsL": "npm run deps && npm run portL"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gustavo-Apolonio/listaNegra.git"
+  },
+  "author": "Gustavo-Apolonio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gustavo-Apolonio/listaNegra/issues"
+  },
+  "homepage": "https://github.com/Gustavo-Apolonio/listaNegra#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mysql2": "^2.3.3-rc.0",
+    "nodemon": "^2.0.14",
+    "pm2": "^5.1.2",
+    "sequelize": "^6.9.0"
+  },
+  "type": "module"
+}
