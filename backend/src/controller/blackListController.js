@@ -51,6 +51,23 @@ router.get("/read", async (request, response) => {
 
 router.put("/update/:id", async (request, response) => {
   try {
+    const itemId = request.params.id || 0;
+    const newItemReq = request.body.item;
+    let item = await srv.consultItemById(itemId);
+
+    if (!item)
+      response
+        .status(404)
+        .send(new Error(404, "Black List Item not registered in system!"));
+    else {
+      const newItem = cnv.toTable(newItemReq);
+
+      item = await srv.updateItem(item, newItem);
+
+      let itemRes = cnv.toResponse(item);
+
+      response.status(200).send(itemRes);
+    }
   } catch (error) {
     response.status(400).send(new Error(400, error));
   }
