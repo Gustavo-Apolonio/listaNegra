@@ -7,8 +7,21 @@ export default class BlackListConverter {
       nm_person: itemReq.name || "",
       ds_reason: itemReq.reason || null,
       ds_place: itemReq.place || null,
-      dt_occurred: itemReq.occurred || null,
+      dt_occurred: new Date(itemReq.occurred) || null,
       dt_included: new Date(),
+      dt_lastUpdate: new Date(),
+    };
+
+    return item;
+  }
+
+  toUpdateTable(itemReq, oldItem) {
+    const item = {
+      nm_person: itemReq.name || "",
+      ds_reason: itemReq.reason || null,
+      ds_place: itemReq.place || null,
+      dt_occurred: new Date(itemReq.occurred) || null,
+      dt_included: oldItem.dt_included,
       dt_lastUpdate: new Date(),
     };
 
@@ -30,6 +43,6 @@ export default class BlackListConverter {
 
   toResponses(itemsTable) {
     const itemsResp = itemsTable.map((item) => this.toResponse(item));
-    return itemsTable;
+    return itemsResp;
   }
 }

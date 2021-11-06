@@ -38,7 +38,9 @@ router.get("/read", async (request, response) => {
     let items = await srv.listItems();
 
     if (items.length === 0)
-      response.status(404, "There's no items in Black List.");
+      response
+        .status(404)
+        .send(new Error(404, "There's no items in Black List."));
     else {
       let itemsRes = cnv.toResponses(items);
 
@@ -60,7 +62,7 @@ router.put("/update/:id", async (request, response) => {
         .status(404)
         .send(new Error(404, "Black List Item not registered in system!"));
     else {
-      const newItem = cnv.toTable(newItemReq);
+      const newItem = cnv.toUpdateTable(newItemReq, item);
 
       item = await srv.updateItem(item, newItem);
 

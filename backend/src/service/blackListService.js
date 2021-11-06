@@ -6,12 +6,18 @@ export default class BlackListService {
     if (item.nm_person === "") throw "Person's name cannot be empty!";
     if (item.nm_person.length > 100)
       throw "Person's name cannot contains more than 100 characters.";
-    if (item.ds_reason.length > 200)
-      throw "The reason cannot contains more than 200 characters.";
-    if (item.ds_place.length > 100)
-      throw "Place's name cannot contains more than 100 characters.";
-    if (item.dt_occurred > new Date())
-      throw "The occurred date cannot be in the future; people can change every time!";
+    if (item.ds_reason !== null) {
+      if (item.ds_reason.length > 200)
+        throw "The reason cannot contains more than 200 characters.";
+    }
+    if (item.ds_place !== null) {
+      if (item.ds_place.length > 100)
+        throw "Place's name cannot contains more than 100 characters.";
+    }
+    if (item.dt_occurred !== null) {
+      if (item.dt_occurred > new Date())
+        throw "The occurred date cannot be in the future; people can change every time!";
+    }
   }
 
   async saveItem(item) {
@@ -21,7 +27,7 @@ export default class BlackListService {
   }
 
   async listItems() {
-    return await tbBlackList.findAll();
+    return await db.listItems();
   }
 
   #verifyItemId(itemId) {
