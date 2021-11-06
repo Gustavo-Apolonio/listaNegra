@@ -75,6 +75,21 @@ router.put("/update/:id", async (request, response) => {
 
 router.delete("/delete/:id", async (request, response) => {
   try {
+    const itemId = request.params.id || 0;
+
+    let item = await srv.consultItemById(itemId);
+
+    if (!item)
+      response
+        .status(404)
+        .send(new Error(404, "Black List Item not registered in system!"));
+    else {
+      item = await srv.deleteItem(item);
+
+      let itemRes = cnv.toResponse(item);
+
+      response.status(200).send(itemRes);
+    }
   } catch (error) {
     response.status(400).send(new Error(400, error));
   }
