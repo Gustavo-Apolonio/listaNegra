@@ -4,10 +4,10 @@ export default class BlackListConverter {
   toTable(itemReq) {
     const item = {
       id_blacklist: 0,
-      nm_person: itemReq.name,
-      ds_reason: itemReq.reason,
-      ds_place: itemReq.place,
-      dt_occurred: itemReq.occurred,
+      nm_person: itemReq.name || "",
+      ds_reason: itemReq.reason || null,
+      ds_place: itemReq.place || null,
+      dt_occurred: itemReq.occurred || null,
       dt_included: new Date(),
       dt_lastUpdate: new Date(),
     };
