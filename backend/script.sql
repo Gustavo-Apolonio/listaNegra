@@ -19,7 +19,7 @@ create table tb_blacklist (
 -- test scripts
 
 insert
-  into tb_blacklist (nm_person, ds_reason, ds_place,  dt_occurred,   dt_include, dt_lastUpdate)
+  into tb_blacklist (nm_person, ds_reason, ds_place,  dt_occurred,  dt_included, dt_lastUpdate)
 values              ("People'", "Hate it", "WorldW", "2021-11-05", "2021-11-05", "2021-11-05" );
 
 select *
