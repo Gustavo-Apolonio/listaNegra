@@ -12,7 +12,7 @@ router.post("/create", async (request, response) => {
     const itemReq = request.body.item;
     let item = cnv.toTable(itemReq);
 
-    item = srv.saveItem(item);
+    item = await srv.saveItem(item);
 
     if (item.id_blacklist <= 0)
       response
@@ -35,6 +35,15 @@ router.post("/create", async (request, response) => {
 
 router.get("/read", async (request, response) => {
   try {
+    let items = await srv.listItems();
+
+    if (items.length === 0)
+      response.status(404, "There's no items in Black List.");
+    else {
+      let itemsRes = cnv.toResponses(items);
+
+      response.status(200).send(itemsRes);
+    }
   } catch (error) {
     response.status(400).send(new Error(400, error));
   }
