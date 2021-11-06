@@ -1,4 +1,4 @@
-import ItemRes from "../models/res/itemRes";
+import ItemRes from "../models/res/itemRes.js";
 
 export default class BlackListConverter {
   toTable(itemReq) {

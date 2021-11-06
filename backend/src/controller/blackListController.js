@@ -1,7 +1,7 @@
 import { Router } from "express";
-import BlackListService from "../service/blackListService";
-import BlackListConverter from "../utils/blackListConverter";
-import Error from "../models/res/errorModel";
+import BlackListService from "../service/blackListService.js";
+import BlackListConverter from "../utils/blackListConverter.js";
+import Error from "../models/res/errorModel.js";
 
 const router = new Router();
 const srv = new BlackListService();

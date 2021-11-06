@@ -1,4 +1,4 @@
-import BlackListDatabase from "../database/blackListDatabase";
+import BlackListDatabase from "../database/blackListDatabase.js";
 const db = new BlackListDatabase();
 
 export default class BlackListService {
